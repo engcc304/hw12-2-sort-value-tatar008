@@ -60,3 +60,51 @@
         99.99 88.88 77.77 66.66
 
 */
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    char Name[20];
+    float Score;
+};
+
+void sortStudents(struct Student students[], int numStudents) {
+    // Implement a simple bubble sort to sort students by score in descending order
+    for (int i = 0; i < numStudents - 1; i++) {
+        for (int j = 0; j < numStudents - i - 1; j++) {
+            if (students[j].Score < students[j + 1].Score) {
+                // Swap the students44
+                struct Student temp = students[j];
+                students[j] = students[j + 1];
+                students[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int numStudents = 4;
+    struct Student students[numStudents];
+
+    // Input student information
+    for (int i = 0; i < numStudents; i++) {
+        printf("Student %c\nName: ", 'A' + i);
+        scanf("%s", students[i].Name);
+        printf("Score: ");
+        scanf("%f", &students[i].Score);
+    }
+
+    // Sort the students by score
+    sortStudents(students, numStudents);
+
+    // Output sorted names and scores
+    for (int i = 0; i < numStudents; i++) {
+        printf("%s ", students[i].Name);
+    }
+    printf("\n");
+    for (int i = 0; i < numStudents; i++) {
+        printf("%.2f ", students[i].Score);
+    }
+
+    return 0;
+}
